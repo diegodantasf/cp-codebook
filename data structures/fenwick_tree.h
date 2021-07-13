@@ -1,6 +1,8 @@
-// Update: point update -- update(pos, x)
-// Query: prefix queries -- get(pos) -> f([0, pos])
-// Time: O(log(n))
+#include <vector>
+using namespace std;
+
+// Update: point update -- update(pos, x) -- O(log(n))
+// Query: prefix query -- get(pos) -> f([0, pos]) -- O(log(n))
 struct FenwickTree{
     vector<int> fw;
     FenwickTree(int n) {
@@ -25,5 +27,6 @@ struct FenwickTree{
         for (; pos >= 0; pos = (pos & pos + 1) - 1) {
             ans = f(ans, fw[pos]);
         }   
+        return ans;
     }
 };
