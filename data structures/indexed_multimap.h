@@ -20,9 +20,13 @@ struct IndexedMultimap {
     void erase(key x) {
         imp.erase(imp.lower_bound({x, -1}));
     }
+    // Return the i-th largest element 
     key find_by_order(int i) {
         return imp.find_by_order(i)->first;
     }
+    // ***ATTENTION***
+    // Equal keys will have the same order value
+    // Return the number of elements less than x
     int order_of_key(key x) {
         return imp.order_of_key({x, -1});
     }
