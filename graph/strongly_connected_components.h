@@ -33,7 +33,7 @@ private:
             ++cnt;
         }
     }
-    void buildCompressGraph(graph& g) {
+    void buildCompressedGraph(graph& g) {
         gc = graph(cnt);
         map<pair<int, int>, bool> vis;
         for (int u = 1; u < (int)g.size(); ++u) {
@@ -50,7 +50,7 @@ public:
         low = pre = cid = vector<int>(g.size());
         cnt = tc = 1;
         dfs(g, 1);
-        //buildCompressGraph(g);
+        buildCompressedGraph(g);
     }
     graph getCompressedGraph() {
         return gc;
