@@ -1,13 +1,12 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-using graph = vector<vector<int>>;
-const int INF = 0x3f3f3f3f;
-
-
 // Tarjan’s Algorithm to find Strongly Connected Components
 // O(V + E)
 // 1-indexed nodes
+
+#include <bits/stdc++.h>
+using namespace std;
+using graph = vector<vector<int>>;
+using ii = pair<int, int>;
+const int INF = 0x3f3f3f3f;
 class SCC {
 private:
     graph gc;
@@ -35,12 +34,13 @@ private:
     }
     void buildCompressedGraph(graph& g) {
         gc = graph(cnt);
-        map<pair<int, int>, bool> vis;
+        set<pair<int, int>> vis;
         for (int u = 1; u < (int)g.size(); ++u) {
             for (int v : g[u]) {
-                if (cid[u] != cid[v] && !vis[{cid[u], cid[v]}]) {
+                ii e = {cid[u], cid[v]};
+                if (cid[u] != cid[v] && vis.find(e) == vis.end()) {
                     gc[cid[u]].push_back(cid[v]);
-                    vis[{cid[u], cid[v]}] = 1;
+                    vis.insert(e);
                 }
             }
         }
