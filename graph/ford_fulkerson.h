@@ -2,7 +2,7 @@
 // Time complexity: O(E^2 * logV * logF)
 // E -> number of edges
 // V -> number of nodes
-// F -> max flowgit push --set-upstream origin graph/fordFulkerson
+// F -> max flow
 
 #include <bits/stdc++.h>
 
