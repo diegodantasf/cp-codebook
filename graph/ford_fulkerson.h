@@ -2,7 +2,7 @@
 // Time complexity: O(E^2 * logV * logF)
 // E -> number of edges
 // V -> number of nodes
-// F -> max flow
+// F -> max flowgit push --set-upstream origin graph/fordFulkerson
 
 #include <bits/stdc++.h>
 
@@ -76,15 +76,15 @@ public:
         return ans;
     }
     // Need to run maxFlow method first
-    unordered_set<int> minCutSet(int s) {
-        unordered_set<int> st;
+    vector<int> minCutSet(int s) {
+        vector<int> ans;
         vector<char> vis(n);
         queue<int> q;
         q.push(s);
         vis[s] = 1;
         while (q.size()) {
             int u = q.front();
-            st.insert(u);
+            ans.push_back(u);
             q.pop();
             for (int ei : gloc[u]) {
                 int v = u ^ edges[ei].u ^ edges[ei].v;
@@ -95,6 +95,6 @@ public:
                 q.push(v);
             }
         }
-        return st;
+        return ans;
     }
 };
