@@ -21,6 +21,8 @@ using ii = pair<int, int>;
 template<class key, class value, class cmp = std::less<key>>
 using IndexedMap = tree<key, value, cmp, rb_tree_tag, tree_order_statistics_node_update>;
 
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
 // Have fun
 // Read the problem
 // Explain the problem with your words to make sure you got it
