@@ -25,8 +25,9 @@ private:
     }
 public:
     // graph g expected to:
-    // g[:k] first partition
+    // g[:k] first partition (open interval on k)
     // g[k:] second partition
+    // g edges are bidirectional
     Kuhn(vector<vector<int>>& _g, int _k) :  k(_k), g(_g) {
         epoch = 1;
         skip.assign(g.size(), -1);
@@ -39,7 +40,7 @@ public:
         // Heuristic #2 - Warm start
         for (int u = 0; u < k; ++u) {
             for (int v : g[u]) {
-                if (vis[v] == epoch) {
+                if (vis[v] != epoch) {
                     vis[v] = epoch;
                     skip[v] = u;
                     break;
